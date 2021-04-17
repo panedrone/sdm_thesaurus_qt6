@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=sdm.demo.qt6.thesaurus
+PROJECTNAME=sdm_demo_qt6_thesaurus
 
 # Active Configuration
 DEFAULTCONF=Debug

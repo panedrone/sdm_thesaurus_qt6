@@ -38,10 +38,10 @@ MainForm::MainForm() {
     QObject::connect(widget.tableWidget, SIGNAL(cellDoubleClicked(int, int)), this, SLOT(cellDoubleClicked(int, int)));
     //////////////////////////////////////////
     QStringList headers;
-    headers << "Part of speech" << "Related" << "Notes";
-    widget.tableWidget->setColumnCount(3);
-    widget.tableWidget->setColumnWidth(0, 120);
-    widget.tableWidget->setColumnWidth(1, 280);
+    headers << "Related" << "Notes";
+    widget.tableWidget->setColumnCount(2);
+    widget.tableWidget->setColumnWidth(0, 240);
+//    widget.tableWidget->setColumnWidth(1, 0);
     widget.tableWidget->setShowGrid(true);
     widget.tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     widget.tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -83,11 +83,11 @@ void MainForm::itemDoubleClicked(QListWidgetItem *item) {
 
         void read(RelatedWord &w) {
             tableWidget->insertRow(i);
-            auto table_item = new QTableWidgetItem(w.RG_PART_OF_SPEECH.Value);
+            auto table_item = new QTableWidgetItem(w.RGW_WORD.Value);
             tableWidget->setItem(i, 0, table_item);
             table_item->setFlags(table_item->flags() ^ Qt::ItemIsEditable);
-            tableWidget->setItem(i, 1, new QTableWidgetItem(w.RGW_WORD.Value));
-            tableWidget->setItem(i, 2, new QTableWidgetItem(w.RGW_NOTE.Value));
+            auto notes = QString("%1 %2").arg(w.RG_PART_OF_SPEECH.Value, w.RGW_NOTE.Value);
+            tableWidget->setItem(i, 1, new QTableWidgetItem(notes));
             i++;
         }
     } reader;

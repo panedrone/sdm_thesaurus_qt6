@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=sdm.demo.qt6.thesaurus
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/sdm.demo.qt6.thesaurus
+CND_ARTIFACT_NAME_Debug=sdm_demo_qt6_thesaurus
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/sdm_demo_qt6_thesaurus
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
-CND_PACKAGE_NAME_Debug=sdm.demo.qt6.thesaurus.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/sdm.demo.qt6.thesaurus.tar
+CND_PACKAGE_NAME_Debug=sdmdemoqt6thesaurus.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/sdmdemoqt6thesaurus.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=sdm.demo.qt6.thesaurus
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/sdm.demo.qt6.thesaurus
+CND_ARTIFACT_NAME_Release=sdm_demo_qt6_thesaurus
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/sdm_demo_qt6_thesaurus
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
-CND_PACKAGE_NAME_Release=sdm.demo.qt6.thesaurus.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/sdm.demo.qt6.thesaurus.tar
+CND_PACKAGE_NAME_Release=sdmdemoqt6thesaurus.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/sdmdemoqt6thesaurus.tar
 #
 # include compiler specific variables
 #

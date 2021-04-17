@@ -13,9 +13,9 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=dll
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sdm.demo.qt6.thesaurus
-OUTPUT_BASENAME=sdm.demo.qt6.thesaurus
-PACKAGE_TOP_DIR=sdm.demo.qt6.thesaurus/
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sdm_demo_qt6_thesaurus
+OUTPUT_BASENAME=sdm_demo_qt6_thesaurus
+PACKAGE_TOP_DIR=sdmdemoqt6thesaurus/
 
 # Functions
 function checkReturnCode
@@ -60,15 +60,15 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/sdm.demo.qt6.thesaurus/bin"
+makeDirectory "${NBTMPDIR}/sdmdemoqt6thesaurus/bin"
 copyFileToTmpDir "${OUTPUT_PATH}.exe" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}.exe" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/sdm.demo.qt6.thesaurus.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/sdmdemoqt6thesaurus.tar
 cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/sdm.demo.qt6.thesaurus.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/sdmdemoqt6thesaurus.tar *
 checkReturnCode
 
 # Cleanup

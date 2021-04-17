@@ -2,7 +2,7 @@
 # Use project properties -> Build -> Qt -> Expert -> Custom Definitions.
 TEMPLATE = app
 DESTDIR = dist/Debug/MinGW-Windows
-TARGET = sdm.demo.qt6.thesaurus
+TARGET = sdm_demo_qt6_thesaurus
 VERSION = 1.0.0
 CONFIG -= debug_and_release app_bundle lib_bundle
 CONFIG += debug 
