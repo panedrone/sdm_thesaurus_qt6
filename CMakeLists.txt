@@ -10,7 +10,7 @@ set(QT_VERSION 6)
 set(REQUIRED_LIBS Core Gui Widgets Sql)
 set(REQUIRED_LIBS_QUALIFIED Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Sql)
 
-add_executable(${PROJECT_NAME} main.cpp MainForm.cpp ThesaurusDao.h DataStore.cpp Qt_Thesaurus.qrc)
+add_executable(${PROJECT_NAME} main.cpp MainForm.cpp DataStore.cpp Qt_Thesaurus.qrc)
 
 if (NOT CMAKE_PREFIX_PATH)
     if (WIN32)
