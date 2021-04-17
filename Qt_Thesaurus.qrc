@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RCC version="1.0">
+    <qresource>
+         <file>images/131.png</file>
+         <file>images/133.png</file>
+         <file>images/094.png</file>
+         <file>images/application-split.png</file>
+    </qresource>
+</RCC>

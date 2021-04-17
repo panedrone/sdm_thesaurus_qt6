@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dao-class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="dao.xsd">
+
+    <query ref="getTotalWordsCount.sql" method="getTotalWordsCount"
+           return-type="Integer"/>
+
+    <query-dto-list ref="getWordsByKey.sql" dto="Word"
+                    method="getWordsByKey(key)"/>
+
+    <query-dto-list ref="getRelatedWords.sql" dto="RelatedWord"
+                    method="getRelatedWords(Integer w_id)"/>
+
+<!--    <exec-dml method="clear_words" ref="delete from WORDS" />
+    
+    <crud-auto dto="Word" table="WORDS" />-->
+    
+</dao-class>

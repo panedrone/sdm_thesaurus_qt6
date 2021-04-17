@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dto-classes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="dto.xsd">
+
+    <dto-class name="Word" ref="WORDS"/>
+
+    <dto-class name="RelatedWord" ref="getRelatedWords.sql">
+        <field type="java.lang.String" column="RG_PART_OF_SPEECH"/>
+        <field type="java.lang.Integer" column="RG_ORDER"/>
+        <field type="java.lang.Integer" column="RGW_ID"/>
+        <field type="java.lang.Integer" column="RG_ID"/>
+        <field type="java.lang.String" column="RGW_WORD"/>
+        <field type="java.lang.String" column="RGW_NOTE"/>
+        <field type="java.lang.Integer" column="RGW_ORDER"/>
+    </dto-class>
+	
+</dto-classes>

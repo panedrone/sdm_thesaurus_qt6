@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="settings.xsd">
+
+    <folders target="" sql="sqldalmaker/sql" />
+
+    <dto scope="" inheritance="" field-names-mode="0" single-file=""/>
+
+    <dao scope="" />
+
+    <external-vm-file path="" />
+        
+    <ide event-log="true"/>
+
+    <cpp class-prefix=""/>
+
+    <jdbc jar="sqldalmaker/sqlite-jdbc-3.19.3.jar" class="org.sqlite.JDBC"
+          url="jdbc:sqlite:$PROJECT_DIR$/thesaurus.sqlite" user="" pwd="" />
+
+    <type-map default="CValue">
+        <type detected="java.lang.Integer" target="CLong" />
+        <type detected="java.lang.Long" target="CLong" />
+        <type detected="java.lang.Double" target="CDouble" />
+        <type detected="java.lang.String" target="CText" />
+        <type detected="byte[]" target="CBlob" />
+    </type-map>
+
+</settings>
