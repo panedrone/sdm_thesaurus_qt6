@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="sdm_demo_qt6_thesaurus" targetName="sdm_demo_qt6_thesaurus" />
@@ -13,7 +16,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a19241c-c948-487a-84d6-c37636e598f5" name="Default Changelist" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/.idea/go.imports.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sdm_demo_qt6_thesaurus.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.sdm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sdm/dao.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sdm/sdm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sdm/settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sdm/settings.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sdm/sqlite-jdbc-3.53.2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/752bff66-0182-439c-8da1-7e52d84659be.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/752bff66-0182-439c-8da1-7e52d84659be.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStore.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DataStore.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStore.h" beforeDir="false" afterPath="$PROJECT_DIR$/DataStore.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MainForm.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RelatedWord.h" beforeDir="false" afterPath="$PROJECT_DIR$/RelatedWord.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ThesaurusDao.h" beforeDir="false" afterPath="$PROJECT_DIR$/ThesaurusDao.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Word.h" beforeDir="false" afterPath="$PROJECT_DIR$/Word.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/configurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/configurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/ThesaurusDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/cpp.dal" beforeDir="false" afterPath="$PROJECT_DIR$/sdm/cpp.dal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/dao.xsd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/dto.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/dto.xsd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/settings.xsd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/sql/getRelatedWords.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sdm/sql/getRelatedWords.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/sql/getTotalWordsCount.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sdm/sql/getTotalWordsCount.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/sql/getWordsByKey.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sdm/sql/getWordsByKey.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqldalmaker/sqlite-jdbc-3.19.3.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,39 +60,58 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-MinGW" />
+  <component name="GOROOT" url="file://$USER_HOME$/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.2.windows-amd64" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "panedrone"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://panedrone@github.com/panedrone/sdm_demo_qt6_thesaurus.git",
+    "accountId": "deb1f6af-6c0e-4348-804c-af417a5996f7"
+  }
+}]]></component>
+  <component name="GoLinterSelectedExecutable" path="$USER_HOME$/go/bin/golangci-lint.exe" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3,
+  "fromUser": false
+}]]></component>
   <component name="ProjectId" id="1rHDEgQnGtRHYS94douVrTgyhZR" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="cf.first.check.clang-format" value="false" />
-    <property name="cidr.known.project.marker" value="true" />
-    <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.GoLinterPluginOnboardingV2": "true",
+    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
+    "RunOnceActivity.GoOptimizationToolWindowEnableInLayout.v333333": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.analysis.ui.options.defaults": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "D:/work/sdm-demos/sdm_demo_qt6_thesaurus/sdm",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\work\sdm-demos\sdm_demo_qt6_thesaurus\sdm" />
       <recent name="D:\work\sdm-demos\sdm_demo_qt6_thesaurus" />
       <recent name="D:\work\sdm-demos\sdm_demo_qt6_thesaurus\cmake-build-debug-mingw" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.sdm_demo_qt6_thesaurus">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="sdm_demo_qt6_thesaurus" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="sdm_demo_qt6_thesaurus" TARGET_NAME="sdm_demo_qt6_thesaurus" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="sdm_demo_qt6_thesaurus" RUN_TARGET_NAME="sdm_demo_qt6_thesaurus">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -67,15 +122,14 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="CMake Application.sdm_demo_qt6_thesaurus" />
-      <item itemvalue="CMake Application.sdm_demo_qt6_thesaurus_autogen" />
-    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-63c95d513abe-08e7ff217c2b-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-262.10968.67" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-GO-262.10968.67" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -88,6 +142,15 @@
       <workItem from="1618624013081" duration="1626000" />
       <workItem from="1618625721890" duration="2361000" />
       <workItem from="1618628119193" duration="1072000" />
+      <workItem from="1618649194009" duration="890000" />
+      <workItem from="1620486684178" duration="156000" />
+      <workItem from="1620486931006" duration="163000" />
+      <workItem from="1620487115256" duration="103000" />
+      <workItem from="1620487235649" duration="2020000" />
+      <workItem from="1623079723056" duration="308000" />
+      <workItem from="1623080049713" duration="353000" />
+      <workItem from="1623080423183" duration="39000" />
+      <workItem from="1623080474816" duration="69000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1618627995565</created>
@@ -133,7 +196,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />

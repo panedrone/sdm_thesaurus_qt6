@@ -1,197 +1,229 @@
-#ifndef __DataStore_H_
-#define __DataStore_H_
+#ifndef SDM_DATA_STORE_H
+#define SDM_DATA_STORE_H
 
 /*
-    This is an example of how to implement DataStore in C++ and Qt5.
-    Copy-paste this code to your project and change it for your needs.
-    SQL DAL Maker Website: http://sqldalmaker.sourceforge.net
-    Improvements are welcome: sqldalmaker@gmail.com
+    The data store for C++, Qt 5/6 and SQLite (QtSql, the driver QSQLITE), used by the generated DAO.
+    "sdmc init -lang cpp -db sqlite" writes it next to the DAO, "sdmc ds" updates it to the sdmc version.
+
+    The generated DAO use only the adapter: CValue and the value classes, CRowProcessor, CListReader,
+    DL_STR and DL_T, the methods of CDataStore under "the adapter of the generated DAO". Keep their
+    names and parameters; everything else is yours: the connection, transactions, logging, more value
+    classes for the type map of settings.xml.
+
+        CDataStore ds;
+        if (!ds.open("app.sqlite3")) {
+            qDebug() << ds.getLastErrors();
+        }
+        TasksDao dao(ds);
+
+    Made from DataStore_Qt5.h of SQL DAL Maker: https://sqldalmaker.sourceforge.net/
  */
 
 #include <QtSql/QSqlDatabase>
+#include <QByteArray>
 #include <QString>
-#include <QBitArray>
+#include <QVariant>
 
 #include <list>
 
-enum ValueType {
-    VALUE_TYPE_LONG = 1,
-    VALUE_TYPE_DOUBLE = 2,
-    VALUE_TYPE_TEXT = 3,
-    VALUE_TYPE_BLOB = 4
-};
-
 /*
-CValue represents nullable values of columns and parameters.
-Create inheritors and extend ValueType enum on demand.
-Read also comments for type-map in "setting.xml".
+    CValue is a nullable value of a column or a parameter. QtSql passes values as QVariant, and each
+    value class converts its Value to and from it: toVariant() for a parameter, fromVariant() for a
+    fetched column (IsNull is set by the data store). As is, CValue holds anything in Variant: it is
+    the type of the fields the type map has no class for (<type-map default="CValue">). Add your own
+    class the same way: a Value and the two conversions.
  */
 class CValue {
 public:
 
     bool IsNull;
 
-    CValue(ValueType t) {
-        type = t;
-        IsNull = false;
+    QVariant Variant; // CValue itself only
+
+    CValue() : IsNull(true) {
     }
 
-    ValueType getType() {
-        return type;
+    virtual ~CValue() {
     }
 
-private:
+    virtual QVariant toVariant() const {
+        return Variant;
+    }
 
-    ValueType type; // C++ RTTI may be off
+    virtual void fromVariant(const QVariant &v) {
+        Variant = v;
+    }
+
+protected:
+
+    explicit CValue(bool isNull) : IsNull(isNull) {
+    }
 };
 
-class CLong : public CValue {
+class CInteger : public CValue {
 public:
 
-    CLong() : CValue(VALUE_TYPE_LONG) {
-        Value = 0;
+    CInteger() : CValue(false), Value(0) {
     }
 
-    int Value;
+    qint64 Value;
+
+    QVariant toVariant() const override {
+        return Value;
+    }
+
+    void fromVariant(const QVariant &v) override {
+        Value = v.toLongLong();
+    }
 };
 
 class CDouble : public CValue {
 public:
 
-    CDouble() : CValue(VALUE_TYPE_DOUBLE) {
-        Value = 0;
+    CDouble() : CValue(false), Value(0) {
     }
 
     double Value;
+
+    QVariant toVariant() const override {
+        return Value;
+    }
+
+    void fromVariant(const QVariant &v) override {
+        Value = v.toDouble();
+    }
 };
 
 class CText : public CValue {
 public:
 
-    CText() : CValue(VALUE_TYPE_TEXT) {
+    CText() : CValue(false) {
     }
 
     QString Value;
+
+    QVariant toVariant() const override {
+        return Value;
+    }
+
+    void fromVariant(const QVariant &v) override {
+        Value = v.toString();
+    }
 };
 
 class CBlob : public CValue {
 public:
 
-    CBlob() : CValue(VALUE_TYPE_BLOB) {
+    CBlob() : CValue(false) {
     }
 
-    QBitArray Value;
-};
+    QByteArray Value;
 
-/////////////////////////////////////////////////////
+    QVariant toVariant() const override {
+        return Value;
+    }
+
+    void fromVariant(const QVariant &v) override {
+        Value = v.toByteArray();
+    }
+};
 
 class CRowProcessor {
 public:
 
     virtual ~CRowProcessor() {
     }
+
     virtual void processRow() = 0;
 };
 
-/////////////////////////////////////////////////////
-
-#define DL_STR const char *
-// #define DL_T(quote) QStringLiteral(quote)
-#define DL_T(quote) quote
-
-/////////////////////////////////////////////////////
-
-class CDataStore {
-private:
-
-    QString errors;
-    bool prepare(const QString &sql, QSqlQuery &query, int params_count, CValue *params[]);
-    bool readRowData(QSqlQuery &query, int ret_values_count, CValue *ret_values[], DL_STR col_names[]);
-
-public:
-
-    const QString & getLastErrors() {
-        return errors;
-    }
-
-    bool open();
-    bool close();
-
-    // TODO: add transaction management
-
-    //////////////////////////////////////////
-    //
-    // The methods called from DAO classes generated by SQL DAL Maker:
-
-    // if there are no AI_values (auto-increment), then call execDML instead
-    // returns the number of inserted rows or -1 on error
-    int insert(DL_STR sql, int params_count, CValue* params[], int AI_values_count, CValue* AI_values[]);
-
-    // returns the number of updated rows or -1 on error
-    int execDML(DL_STR sql, int params_count, CValue* params[]);
-
-    // no params: params_count == 0 and params == 0
-    // returns the number of fetched rows or -1 on error
-    int queryRow(DL_STR sql, int params_count, CValue* params[], int ret_values_count, CValue* ret_values[], DL_STR col_names[]);
-
-    // no params: params_count == 0 and params == 0
-    // returns the number of fetched rows or -1 on error
-    int queryRowList(DL_STR sql, int params_count, CValue* params[], int ret_values_count, CValue* ret_values[], DL_STR col_names[], CRowProcessor *rowProcessor);
-};
-
 /*
+    A DAO method for a list calls read() for each fetched row:
 
-Usage of CListReader
---------------------
-
-struct : CListReader<CCategory>
-{
-void read(CCategory &c)
-{
-_tprintf(_T("%ls\r\n"), c.CategoryName.m_value.GetBuffer());
-}
-
-} lr;
-
-// getAllCategories is a method of generated DAO class
-
-dao.getAllCategories(&lr);
-
+        struct : CListReader<Task> {
+            void read(Task &t) { qDebug() << t.t_subject.Value; }
+        } reader;
+        dao.read_task_list(reader);
  */
-
 template <class T>
 class CListReader {
 public:
 
     virtual ~CListReader() {
     }
-    virtual void read(/*const*/ T &t) = 0;
+
+    virtual void read(T &t) = 0;
 };
 
 /*
+    CListReader2 collects the rows:
 
-Usage of CListReader2
---------------------
-
-CListReader2<CCategory> lr;
-
-// getAllCategories is a method of generated DAO class
-
-dao.getAllCategories(&lr);
-
-_tprintf(_T("%d\r\n"), c.list.size());
-
+        CListReader2<Task> reader;
+        dao.read_task_list(reader);
+        qDebug() << reader.list.size();
  */
-
 template <class T>
 class CListReader2 : public CListReader<T> {
 public:
-    std::list<T> list; // TODO: not tested yet
+
+    std::list<T> list;
 
     void read(T &t) {
         list.push_back(t);
     }
 };
 
+#define DL_STR const char *
+#define DL_T(quote) quote
 
-#endif //__DataStore_H_
+class QSqlQuery;
+
+class CDataStore {
+public:
+
+    // connectionName: the QSqlDatabase connection of this data store
+    explicit CDataStore(const QString &connectionName = QLatin1String(QSqlDatabase::defaultConnection));
+
+    // the errors of the last call, empty if it succeeded
+    const QString &getLastErrors() const {
+        return errors;
+    }
+
+    // the SQLite file; yours, as everything but the adapter
+    bool open(const QString &file);
+    void close();
+
+    bool begin();
+    bool commit();
+    bool rollback();
+    bool inTransaction() const {
+        return transaction;
+    }
+
+    // the adapter of the generated DAO -------------------------------------------------------------
+
+    // AI_values: the generated values, at most one; without them the DAO call execDML instead.
+    // Returns the number of inserted rows or -1 on error.
+    int insert(DL_STR sql, int params_count, CValue *params[], int AI_values_count, CValue *AI_values[]);
+
+    // Returns the number of affected rows or -1 on error.
+    int execDML(DL_STR sql, int params_count, CValue *params[]);
+
+    // No params: params_count == 0 and params == 0. Returns the number of fetched rows or -1 on error;
+    // more than 1 row is an error too (getLastErrors), ret_values have the last one.
+    int queryRow(DL_STR sql, int params_count, CValue *params[], int ret_values_count, CValue *ret_values[], DL_STR col_names[]);
+
+    // No params: params_count == 0 and params == 0. Returns the number of fetched rows or -1 on error.
+    int queryRowList(DL_STR sql, int params_count, CValue *params[], int ret_values_count, CValue *ret_values[], DL_STR col_names[], CRowProcessor *rowProcessor);
+
+private:
+
+    QString connectionName;
+    QString errors;
+    bool transaction;
+
+    bool exec(DL_STR sql, QSqlQuery &query, int params_count, CValue *params[]);
+    bool readRow(QSqlQuery &query, int ret_values_count, CValue *ret_values[], DL_STR col_names[]);
+};
+
+#endif // SDM_DATA_STORE_H

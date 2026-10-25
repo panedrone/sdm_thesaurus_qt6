@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="settings.xsd">
+
+    <!-- Paths are relative to the project root (the folder sdmc runs in). -->
+
+    <!-- target: the folder of the generated headers, models and DAO (<Class>.h), next to
+            DataStore.h and DataStore.cpp
+         sql: base folder of SQL files -->
+
+    <folders target="." sql="sdm/sql"/>
+
+    <!-- field-names-mode: the fields of models and the names of CRUD methods
+            0 - as is: the column names (create + Task: createTask)
+            1 - lowerCamelCase (taskId, createTask)
+            2 - snake_case (task_id, create_task)
+         scope, field-assign-mode: the IDE plug-in only; sdmc ignores them for C++. -->
+
+    <dto scope="" inheritance="" field-names-mode="0" macro=""/>
+
+    <dao scope="" field-assign-mode="0" macro=""/>
+
+    <ide event-log="true"/>
+
+    <!-- One "settings.xml" for the IDE plug-in and for sdmc:
+            jdbc  - the IDE plug-in (jar, class and url of JDBC); sdmc does not read it.
+            db    - sdmc (url: postgres://host:port/db, mysql://host:port/db or sqlite:<file>);
+                    the IDE plug-in ignores it. SDM_PWD, if set, overrides "pwd" of db. -->
+
+    <jdbc jar="sdm/sqlite-jdbc-3.53.2.1.jar" class="org.sqlite.JDBC"
+          url="jdbc:sqlite:$PROJECT_DIR$/thesaurus.sqlite" user="" pwd=""/>
+
+    <db url="sqlite:thesaurus.sqlite" user="" pwd=""/>
+
+    <!-- detected: the type of a column as the driver names it. The keys below are SQLite
+         (sdmc init -db pg, mysql or sqlite). PostgreSQL says int4, varchar, timestamptz, ...;
+         MySQL says INT, VARCHAR, DATETIME, UNSIGNED BIGINT, ...;
+         SQLite says what the column is declared with: INTEGER, VARCHAR, ...
+
+         target: a value class of DataStore.h (Qt, the driver QSQLITE): CInteger (qint64),
+         CDouble, CText (QString), CBlob (QByteArray); CValue holds anything in a QVariant.
+         Add your own classes to DataStore.h and use them here.
+
+         To see which names your database gives, empty the type-map: <type-map default=""/>
+         and generate. The code then has the raw names of the driver instead of C++ classes.
+         unknown - the driver said nothing about the type (MySQL parameters, SQLite expressions). -->
+
+    <type-map default="">
+
+        <type detected="INTEGER" target="CInteger"/>
+        <type detected="INT" target="CInteger"/>
+        <type detected="BIGINT" target="CInteger"/>
+        <type detected="SMALLINT" target="CInteger"/>
+        <type detected="TINYINT" target="CInteger"/>
+        <type detected="MEDIUMINT" target="CInteger"/>
+        <type detected="UNSIGNED BIG INT" target="CInteger"/>
+        <type detected="INT2" target="CInteger"/>
+        <type detected="INT8" target="CInteger"/>
+        <type detected="STRING" target="CText"/>
+        <type detected="VARYING CHARACTER" target="CText"/>
+        <type detected="NATIVE CHARACTER" target="CText"/>
+        <type detected="REAL" target="CDouble"/>
+        <type detected="DOUBLE" target="CDouble"/>
+        <type detected="FLOAT" target="CDouble"/>
+        <type detected="NUMERIC" target="CDouble"/>
+        <type detected="DECIMAL" target="CDouble"/>
+        <type detected="TEXT" target="CText"/>
+        <type detected="VARCHAR" target="CText"/>
+        <type detected="CHAR" target="CText"/>
+        <type detected="CHARACTER" target="CText"/>
+        <type detected="NVARCHAR" target="CText"/>
+        <type detected="NCHAR" target="CText"/>
+        <type detected="CLOB" target="CText"/>
+        <type detected="BLOB" target="CBlob"/>
+        <type detected="DOUBLE PRECISION" target="CDouble"/>
+        <type detected="MONEY" target="CDouble"/>
+        <type detected="NTEXT" target="CText"/>
+        <type detected="BINARY" target="CBlob"/>
+        <type detected="VARBINARY" target="CBlob"/>
+        <type detected="IMAGE" target="CBlob"/>
+        <type detected="BIT" target="CInteger"/>
+
+        <type detected="BOOLEAN" target="CInteger"/>
+        <type detected="DATE" target="CText"/>
+        <type detected="DATETIME" target="CText"/>
+        <type detected="TIMESTAMP" target="CText"/>
+        <type detected="unknown" target="CValue"/>
+
+        <!-- The Java names: the explicit types of <field type="..."/> in sdm.xml (SQLite says
+             nothing about the columns of a query before it runs) and the keys of the IDE plug-in. -->
+
+        <type detected="java.lang.Integer" target="CInteger"/>
+        <type detected="java.lang.Long" target="CInteger"/>
+        <type detected="java.lang.Double" target="CDouble"/>
+        <type detected="java.lang.String" target="CText"/>
+        <type detected="byte[]" target="CBlob"/>
+        <type detected="java.lang.Object" target="CValue"/>
+
+    </type-map>
+
+    <macros>
+    </macros>
+
+</settings>

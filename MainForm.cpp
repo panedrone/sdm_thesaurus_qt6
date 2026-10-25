@@ -12,6 +12,11 @@
 #include "ThesaurusDao.h"
 #include "DataStore.h"
 
+// thesaurus.sqlite and url.txt are next to the executable (CMakeLists.txt copies them there)
+static QString databaseFile() {
+    return QCoreApplication::applicationDirPath() + "/thesaurus.sqlite";
+}
+
 MainForm::MainForm() {
     widget.setupUi(this);
     setWindowIcon(QIcon(":/images/application-split.png"));
@@ -71,7 +76,7 @@ void MainForm::itemDoubleClicked(QListWidgetItem *item) {
     widget.tableWidget->setItem(i, 1, new QTableWidgetItem(item->text()));
     widget.tableWidget->setItem(i, 2, new QTableWidgetItem(""));
     CDataStore ds;
-    if (!ds.open()) {
+    if (!ds.open(databaseFile())) {
         QMessageBox::information(this, "Error", ds.getLastErrors());
         return;
     }
@@ -93,8 +98,8 @@ void MainForm::itemDoubleClicked(QListWidgetItem *item) {
     } reader;
     reader.tableWidget = widget.tableWidget;
     QVariant v = item->data(Qt::UserRole);
-    int id = v.value<int>();
-    CLong ID;
+    qint64 id = v.value<qint64>();
+    CInteger ID;
     ID.Value = id;
     int res = dao.getRelatedWords(ID, reader);
     if (res < 0) {
@@ -119,7 +124,7 @@ void MainForm::search_by_key(const QString &key_text) {
         return;
     }
     CDataStore ds;
-    if (!ds.open()) {
+    if (!ds.open(databaseFile())) {
         QMessageBox::information(this, "Error", ds.getLastErrors());
         return;
     }

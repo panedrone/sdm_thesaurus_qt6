@@ -1,0 +1,22 @@
+# sdm_demo_qt6_thesaurus
+
+# sdm root-file, ensure lower case:
+
+--- sdm
+
+# sdm/php.dal
+# sdm/java.dal
+sdm/cpp.dal
+# sdm/python.dal
+# sdm/go.dal
+
+# an optional title in the end:
+
+# <path>|title
+
+---
+
+# my favorites:
+
+README.md
+

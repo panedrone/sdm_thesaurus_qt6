@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/sdm.demo.qt6.thesaurus.iml" filepath="$PROJECT_DIR$/.idea/sdm.demo.qt6.thesaurus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sdm_demo_qt6_thesaurus.iml" filepath="$PROJECT_DIR$/.idea/sdm_demo_qt6_thesaurus.iml" />
     </modules>
   </component>
 </project>

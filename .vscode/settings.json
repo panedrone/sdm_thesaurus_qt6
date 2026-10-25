@@ -1,0 +1,14 @@
+{
+    "cmake.generator": "Ninja",
+    "cmake.buildDirectory": "${workspaceFolder}/out/build",
+    "cmake.configureSettings": {
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.8.3/mingw_64",
+        "CMAKE_CXX_COMPILER": "C:/mingw64/bin/g++.exe"
+    },
+    "cmake.debugConfig": {
+        "cwd": "${workspaceFolder}",
+        "MIMode": "gdb",
+        "miDebuggerPath": "C:/mingw64/bin/gdb.exe"
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+}
