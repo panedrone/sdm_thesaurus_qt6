@@ -32,9 +32,9 @@ Docs: [sqldalmaker.sourceforge.net](https://sqldalmaker.sourceforge.net/)
 <dto-class name="Word" ref="WORDS"/>
 
 <dao-class name="ThesaurusDao">
-    <query ref="getTotalWordsCount.sql" method="getTotalWordsCount" return-type="java.lang.Integer"/>
+    <query ref="getTotalWordsCount.sql" method="getTotalWordsCount" return-type="CInteger"/>
     <query-dto-list ref="getWordsByKey.sql" dto="Word" method="getWordsByKey(key)"/>
-    <query-dto-list ref="getRelatedWords.sql" dto="RelatedWord" method="getRelatedWords(java.lang.Integer w_id)"/>
+    <query-dto-list ref="getRelatedWords.sql" dto="RelatedWord" method="getRelatedWords(CInteger w_id)"/>
 </dao-class>
 ```
 
