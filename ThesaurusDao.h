@@ -24,7 +24,7 @@ public:
     int getTotalWordsCount(CInteger &res) {
         DL_STR sql = DL_T("select count(*) from WORDS");
         CValue *res_values[] = {&res};
-        DL_STR col_names[] = {DL_T("ret_value")};
+        DL_STR col_names[] = {DL_T("count(*)")};
         return m_ds.queryRow(sql, 0, 0, 1, res_values, col_names);
     }
 	
