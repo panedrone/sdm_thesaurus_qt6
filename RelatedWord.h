@@ -14,7 +14,7 @@ public:
     CInteger RGW_ID; // q
     CInteger RG_ID; // q
     CText RGW_WORD; // q
-    CText RGW_NOTE; // q
+    CTextN RGW_NOTE; // q
     CInteger RGW_ORDER; // q
 };
 

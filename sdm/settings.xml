@@ -38,8 +38,10 @@
          SQLite says what the column is declared with: INTEGER, VARCHAR, ...
 
          target: a value class of DataStore.h (Qt, the driver QSQLITE): CInteger (qint64),
-         CDouble, CText (QString), CBlob (QByteArray); CValue holds anything in a QVariant.
-         Add your own classes to DataStore.h and use them here.
+         CDouble, CText (QString), CBlob (QByteArray) for NOT NULL columns, CIntegerN, CDoubleN,
+         CTextN, CBlobN (Value and IsNull) for nullable ones; CVariant holds anything in a QVariant.
+         "CText${N}" is CTextN for a nullable column of a table and CText otherwise (the macro ${N}
+         below). Add your own classes to DataStore.h and use them here.
 
          To see which names your database gives, empty the type-map: <type-map default=""/>
          and generate. The code then has the raw names of the driver instead of C++ classes.
@@ -47,58 +49,69 @@
 
     <type-map default="">
 
-        <type detected="INTEGER" target="CInteger"/>
-        <type detected="INT" target="CInteger"/>
-        <type detected="BIGINT" target="CInteger"/>
-        <type detected="SMALLINT" target="CInteger"/>
-        <type detected="TINYINT" target="CInteger"/>
-        <type detected="MEDIUMINT" target="CInteger"/>
-        <type detected="UNSIGNED BIG INT" target="CInteger"/>
-        <type detected="INT2" target="CInteger"/>
-        <type detected="INT8" target="CInteger"/>
-        <type detected="STRING" target="CText"/>
-        <type detected="VARYING CHARACTER" target="CText"/>
-        <type detected="NATIVE CHARACTER" target="CText"/>
-        <type detected="REAL" target="CDouble"/>
-        <type detected="DOUBLE" target="CDouble"/>
-        <type detected="FLOAT" target="CDouble"/>
-        <type detected="NUMERIC" target="CDouble"/>
-        <type detected="DECIMAL" target="CDouble"/>
-        <type detected="TEXT" target="CText"/>
-        <type detected="VARCHAR" target="CText"/>
-        <type detected="CHAR" target="CText"/>
-        <type detected="CHARACTER" target="CText"/>
-        <type detected="NVARCHAR" target="CText"/>
-        <type detected="NCHAR" target="CText"/>
-        <type detected="CLOB" target="CText"/>
-        <type detected="BLOB" target="CBlob"/>
-        <type detected="DOUBLE PRECISION" target="CDouble"/>
-        <type detected="MONEY" target="CDouble"/>
-        <type detected="NTEXT" target="CText"/>
-        <type detected="BINARY" target="CBlob"/>
-        <type detected="VARBINARY" target="CBlob"/>
-        <type detected="IMAGE" target="CBlob"/>
-        <type detected="BIT" target="CInteger"/>
+        <type detected="INTEGER" target="CInteger${N}"/>
+        <type detected="INT" target="CInteger${N}"/>
+        <type detected="BIGINT" target="CInteger${N}"/>
+        <type detected="SMALLINT" target="CInteger${N}"/>
+        <type detected="TINYINT" target="CInteger${N}"/>
+        <type detected="MEDIUMINT" target="CInteger${N}"/>
+        <type detected="UNSIGNED BIG INT" target="CInteger${N}"/>
+        <type detected="INT2" target="CInteger${N}"/>
+        <type detected="INT8" target="CInteger${N}"/>
+        <type detected="STRING" target="CText${N}"/>
+        <type detected="VARYING CHARACTER" target="CText${N}"/>
+        <type detected="NATIVE CHARACTER" target="CText${N}"/>
+        <type detected="REAL" target="CDouble${N}"/>
+        <type detected="DOUBLE" target="CDouble${N}"/>
+        <type detected="FLOAT" target="CDouble${N}"/>
+        <type detected="NUMERIC" target="CDouble${N}"/>
+        <type detected="DECIMAL" target="CDouble${N}"/>
+        <type detected="TEXT" target="CText${N}"/>
+        <type detected="VARCHAR" target="CText${N}"/>
+        <type detected="CHAR" target="CText${N}"/>
+        <type detected="CHARACTER" target="CText${N}"/>
+        <type detected="NVARCHAR" target="CText${N}"/>
+        <type detected="NCHAR" target="CText${N}"/>
+        <type detected="CLOB" target="CText${N}"/>
+        <type detected="BLOB" target="CBlob${N}"/>
+        <type detected="DOUBLE PRECISION" target="CDouble${N}"/>
+        <type detected="MONEY" target="CDouble${N}"/>
+        <type detected="NTEXT" target="CText${N}"/>
+        <type detected="BINARY" target="CBlob${N}"/>
+        <type detected="VARBINARY" target="CBlob${N}"/>
+        <type detected="IMAGE" target="CBlob${N}"/>
+        <type detected="BIT" target="CInteger${N}"/>
 
-        <type detected="BOOLEAN" target="CInteger"/>
-        <type detected="DATE" target="CText"/>
-        <type detected="DATETIME" target="CText"/>
-        <type detected="TIMESTAMP" target="CText"/>
-        <type detected="unknown" target="CValue"/>
+        <type detected="BOOLEAN" target="CInteger${N}"/>
+        <type detected="DATE" target="CText${N}"/>
+        <type detected="DATETIME" target="CText${N}"/>
+        <type detected="TIMESTAMP" target="CText${N}"/>
+        <type detected="unknown" target="CVariant"/>
 
         <!-- The Java names: the explicit types of <field type="..."/> in sdm.xml (SQLite says
              nothing about the columns of a query before it runs) and the keys of the IDE plug-in. -->
 
-        <type detected="java.lang.Integer" target="CInteger"/>
-        <type detected="java.lang.Long" target="CInteger"/>
-        <type detected="java.lang.Double" target="CDouble"/>
-        <type detected="java.lang.String" target="CText"/>
-        <type detected="byte[]" target="CBlob"/>
-        <type detected="java.lang.Object" target="CValue"/>
+        <type detected="java.lang.Integer" target="CInteger${N}"/>
+        <type detected="java.lang.Long" target="CInteger${N}"/>
+        <type detected="java.lang.Double" target="CDouble${N}"/>
+        <type detected="java.lang.String" target="CText${N}"/>
+        <type detected="byte[]" target="CBlob${N}"/>
+        <type detected="java.lang.Object" target="CVariant"/>
 
     </type-map>
 
     <macros>
+
+        <!-- ${N}: "N" for a nullable column of a table (CTextN), nothing for NOT NULL and PK (CText);
+             SQLite reports "integer primary key" as nullable -->
+        <macro name="${N}">
+            <vm-xml>
+                <if var="$fi.Nullable &amp;&amp; !$fi.PK">
+                    <print var="N"/>
+                </if>
+            </vm-xml>
+        </macro>
+
     </macros>
 
 </settings>

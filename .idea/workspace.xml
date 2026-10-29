@@ -15,41 +15,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a19241c-c948-487a-84d6-c37636e598f5" name="Default Changelist" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/.idea/go.imports.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sdm_demo_qt6_thesaurus.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.sdm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sdm/dao.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sdm/sdm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sdm/settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sdm/settings.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sdm/sqlite-jdbc-3.53.2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/752bff66-0182-439c-8da1-7e52d84659be.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/752bff66-0182-439c-8da1-7e52d84659be.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="6a19241c-c948-487a-84d6-c37636e598f5" name="Default Changelist" comment="1.0.10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataStore.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DataStore.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataStore.h" beforeDir="false" afterPath="$PROJECT_DIR$/DataStore.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MainForm.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RelatedWord.h" beforeDir="false" afterPath="$PROJECT_DIR$/RelatedWord.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ThesaurusDao.h" beforeDir="false" afterPath="$PROJECT_DIR$/ThesaurusDao.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Word.h" beforeDir="false" afterPath="$PROJECT_DIR$/Word.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/configurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/configurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/ThesaurusDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/cpp.dal" beforeDir="false" afterPath="$PROJECT_DIR$/sdm/cpp.dal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/dao.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/dto.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/dto.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/settings.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/sql/getRelatedWords.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sdm/sql/getRelatedWords.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/sql/getTotalWordsCount.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sdm/sql/getTotalWordsCount.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/sql/getWordsByKey.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sdm/sql/getWordsByKey.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqldalmaker/sqlite-jdbc-3.19.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdm/sdm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sdm/sdm.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,46 +32,46 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "panedrone"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;panedrone&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://panedrone@github.com/panedrone/sdm_demo_qt6_thesaurus.git",
+    "url": "https://panedrone@github.com/panedrone/sdm_thesaurus_qt6.git",
     "accountId": "deb1f6af-6c0e-4348-804c-af417a5996f7"
   }
 }]]></component>
   <component name="GoLinterSelectedExecutable" path="$USER_HOME$/go/bin/golangci-lint.exe" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="1rHDEgQnGtRHYS94douVrTgyhZR" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.GoLinterPluginOnboardingV2": "true",
-    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
-    "RunOnceActivity.GoOptimizationToolWindowEnableInLayout.v333333": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.analysis.ui.options.defaults": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "D:/work/sdm-demos/sdm_demo_qt6_thesaurus/sdm",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.GoLinterPluginOnboardingV2&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoOptimizationToolWindowEnableInLayout.v333333&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.analysis.ui.options.defaults&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/work/sdm-demos/sdm_demo_qt6_thesaurus/sdm&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\work\sdm-demos\sdm_demo_qt6_thesaurus\sdm" />
@@ -199,6 +167,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="1.0.10" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0.10" />
   </component>
 </project>

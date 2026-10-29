@@ -65,7 +65,7 @@ bool CDataStore::exec(DL_STR sql, QSqlQuery &query, int params_count, CValue *pa
         return false;
     }
     for (int i = 0; i < params_count; i++) {
-        query.addBindValue(params[i]->IsNull ? QVariant() : params[i]->toVariant());
+        query.addBindValue(params[i]->toVariant());
     }
     if (!query.exec()) {
         errors = query.lastError().text();
@@ -81,9 +81,7 @@ bool CDataStore::readRow(QSqlQuery &query, int ret_values_count, CValue *ret_val
             errors = QString("no column %1 in the result").arg(col_names[i]);
             return false;
         }
-        QVariant value = query.value(index);
-        ret_values[i]->IsNull = value.isNull();
-        ret_values[i]->fromVariant(value); // a null QVariant gives 0, "" or an empty array
+        ret_values[i]->fromVariant(query.value(index));
     }
     return true;
 }
@@ -98,7 +96,6 @@ int CDataStore::insert(DL_STR sql, int params_count, CValue *params[], int AI_va
         return rows;
     }
     QVariant id = query.lastInsertId();
-    AI_values[0]->IsNull = id.isNull();
     AI_values[0]->fromVariant(id);
     return rows;
 }

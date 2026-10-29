@@ -26,107 +26,122 @@
 
 #include <list>
 
+// nullOf is the NULL of type T: a typed one, so that any driver knows what it binds
+template <class T>
+QVariant nullOf() {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    return QVariant(QMetaType::fromType<T>());
+#else
+    return QVariant(qMetaTypeId<T>(), nullptr);
+#endif
+}
+
 /*
-    CValue is a nullable value of a column or a parameter. QtSql passes values as QVariant, and each
-    value class converts its Value to and from it: toVariant() for a parameter, fromVariant() for a
-    fetched column (IsNull is set by the data store). As is, CValue holds anything in Variant: it is
-    the type of the fields the type map has no class for (<type-map default="CValue">). Add your own
-    class the same way: a Value and the two conversions.
+    CValue is a value of a column or a parameter, without data of its own: QtSql passes values as
+    QVariant, and each value class converts its Value to and from it, NULL included: toVariant() for
+    a parameter, fromVariant() for a fetched column. A class of your own is a typedef of the templates
+    below or, for anything else, a Value and the two conversions.
+
+    Each type comes twice, the same way for all of them, from two templates:
+      - CNotNull<T> (CInteger, CDouble, CText, CBlob): a NOT NULL column, Value only; NULL is never
+        sent (QString() goes as ""), a NULL that comes anyway is 0 or empty;
+      - CNullable<T> (CIntegerN, CDoubleN, CTextN, CBlobN): a nullable column, Value and IsNull; a new
+        one is NULL, set IsNull = false along with Value.
+    T is any type QVariant converts (QVariant::fromValue, value<T>): typedef CNullable<QDateTime> CDateTimeN;
+    CVariant is one: QVariant has its own NULL.
+    Which of the two a field gets is up to the type map of settings.xml: target="CText${N}", where the
+    macro ${N} gives "N" for a nullable column of a table.
  */
 class CValue {
 public:
 
-    bool IsNull;
-
-    QVariant Variant; // CValue itself only
-
-    CValue() : IsNull(true) {
-    }
-
     virtual ~CValue() {
     }
 
-    virtual QVariant toVariant() const {
-        return Variant;
-    }
+    virtual QVariant toVariant() const = 0;
 
-    virtual void fromVariant(const QVariant &v) {
-        Variant = v;
-    }
-
-protected:
-
-    explicit CValue(bool isNull) : IsNull(isNull) {
-    }
+    virtual void fromVariant(const QVariant &v) = 0;
 };
 
-class CInteger : public CValue {
+// CVariant holds anything: the type of the fields the type map has no class for (<type-map default="CVariant">).
+class CVariant : public CValue {
 public:
 
-    CInteger() : CValue(false), Value(0) {
-    }
-
-    qint64 Value;
+    QVariant Value; // QVariant() is NULL
 
     QVariant toVariant() const override {
         return Value;
     }
 
     void fromVariant(const QVariant &v) override {
-        Value = v.toLongLong();
+        Value = v;
     }
 };
 
-class CDouble : public CValue {
+// notNull is the value of a NOT NULL column: QString() and QByteArray() go as "", never as NULL
+template <class T>
+QVariant notNull(const T &v) {
+    return QVariant::fromValue(v);
+}
+
+inline QVariant notNull(const QString &v) {
+    return v.isNull() ? QVariant(QString("")) : QVariant(v);
+}
+
+inline QVariant notNull(const QByteArray &v) {
+    return v.isNull() ? QVariant(QByteArray("")) : QVariant(v);
+}
+
+// CNotNull is a NOT NULL column: Value only. A NULL that comes anyway is T(): 0 or empty.
+template <class T>
+class CNotNull : public CValue {
 public:
 
-    CDouble() : CValue(false), Value(0) {
+    CNotNull() : Value() {
     }
 
-    double Value;
+    T Value;
 
     QVariant toVariant() const override {
-        return Value;
+        return notNull(Value);
     }
 
     void fromVariant(const QVariant &v) override {
-        Value = v.toDouble();
+        Value = v.value<T>();
     }
 };
 
-class CText : public CValue {
+// CNullable is a nullable column: Value and IsNull. A new one is NULL; set IsNull = false along with Value.
+template <class T>
+class CNullable : public CValue {
 public:
 
-    CText() : CValue(false) {
+    CNullable() : Value(), IsNull(true) {
     }
 
-    QString Value;
+    T Value;
+    bool IsNull;
 
     QVariant toVariant() const override {
-        return Value;
+        return IsNull ? nullOf<T>() : notNull(Value);
     }
 
     void fromVariant(const QVariant &v) override {
-        Value = v.toString();
+        IsNull = v.isNull();
+        Value = IsNull ? T() : v.value<T>();
     }
 };
 
-class CBlob : public CValue {
-public:
+// the classes of the type map; one more type is one more pair of lines
+typedef CNotNull<qint64> CInteger;
+typedef CNotNull<double> CDouble;
+typedef CNotNull<QString> CText;
+typedef CNotNull<QByteArray> CBlob;
 
-    CBlob() : CValue(false) {
-    }
-
-    QByteArray Value;
-
-    QVariant toVariant() const override {
-        return Value;
-    }
-
-    void fromVariant(const QVariant &v) override {
-        Value = v.toByteArray();
-    }
-};
+typedef CNullable<qint64> CIntegerN;
+typedef CNullable<double> CDoubleN;
+typedef CNullable<QString> CTextN;
+typedef CNullable<QByteArray> CBlobN;
 
 class CRowProcessor {
 public:

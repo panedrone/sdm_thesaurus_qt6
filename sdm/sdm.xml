@@ -11,18 +11,14 @@
         <field type="CInteger" column="RGW_ID"/>
         <field type="CInteger" column="RG_ID"/>
         <field type="CText" column="RGW_WORD"/>
-        <field type="CText" column="RGW_NOTE"/>
+        <field type="CTextN" column="RGW_NOTE"/>
         <field type="CInteger" column="RGW_ORDER"/>
     </dto-class>
 
     <dao-class name="ThesaurusDao">
-
         <query ref="getTotalWordsCount.sql" method="getTotalWordsCount" return-type="CInteger"/>
-
         <query-dto-list ref="getWordsByKey.sql" dto="Word" method="getWordsByKey(key)"/>
-
         <query-dto-list ref="getRelatedWords.sql" dto="RelatedWord" method="getRelatedWords(CInteger w_id)"/>
-
     </dao-class>
 
 </sdm>
